@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <StartupObject>AutoTotal.App</StartupObject>
+    <ApplicationIcon>at.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>AutoTotal</Title>
+    <Authors>malw.ru</Authors>
+    <Description>Автоматически сканирует файлы в вашей папке Загрузки на VirusTotal</Description>
+    <PackageProjectUrl>https://malw.ru/autototal</PackageProjectUrl>
+    <PackageIcon>packageicon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ImMALWARE/AutoTotal</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>VirusTotal, антивирус, сканирование, VT, автоматизация</PackageTags>
+    <PackageOutputPath>$(OutputPath)</PackageOutputPath>
+    <NeutralLanguage>ru</NeutralLanguage>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="res\error.png" />
+    <None Remove="res\like.png" />
+    <None Remove="res\virustotal.png" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Content Include="at.ico" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Notification.Wpf" Version="7.0.0.2" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="packageicon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="res\error.png" />
+    <Resource Include="res\like.png" />
+    <Resource Include="res\virustotal.png" />
+  </ItemGroup>
+
+</Project>
