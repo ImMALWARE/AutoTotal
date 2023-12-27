@@ -13,7 +13,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>AutoTotal</Title>
     <Authors>malw.ru</Authors>
-    <Description>Автоматически сканирует файлы в вашей папке Загрузки на VirusTotal</Description>
+    <Description>Автоматическое сканирование файлов из Загрузок (и не только) на VirusTotal</Description>
     <PackageProjectUrl>https://malw.ru/autototal</PackageProjectUrl>
     <PackageIcon>packageicon.png</PackageIcon>
     <RepositoryUrl>https://github.com/ImMALWARE/AutoTotal</RepositoryUrl>
@@ -21,6 +21,7 @@
     <PackageTags>VirusTotal, антивирус, сканирование, VT, автоматизация</PackageTags>
     <PackageOutputPath>$(OutputPath)</PackageOutputPath>
     <NeutralLanguage>ru</NeutralLanguage>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 	
   <ItemGroup>
@@ -54,6 +55,10 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
