@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:res="clr-namespace:AutoTotal.Properties"
         mc:Ignorable="d"
-        Title="AutoTotal — Настройки"
+        Title="{x:Static res:Resources.ATSettings}"
         FontFamily="Bahnschrift"
         Height="410"
         Width="400"
@@ -46,7 +47,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Список папок" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,0"/>
+        <TextBlock Grid.Row="0" Text="{x:Static res:Resources.FoldersList}" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,0"/>
         <ListView Grid.Row="1" Name="Folders" Background="Transparent" BorderBrush="White">
             <ListView.Resources>
                 <Style TargetType="ScrollBar">
@@ -81,9 +82,9 @@
             <Button Grid.Column="0" Content="+ папка" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="AddFolder"/>
             <Button Grid.Column="1" Content="- папка" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="DelFolder"/>
         </Grid>
-        <CheckBox Grid.Row="3" x:Name="BlockCheckbox" Content="Блокировать файлы на время сканирования" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" Foreground="White"/>
-        <CheckBox Grid.Row="4" x:Name="AutoRunCheckbox" Content="Автозапуск приложения" FontSize="16" FontWeight="Bold" Margin="10,10,0,15" Foreground="White"/>
-        <Button Grid.Row="5" Content="Изменить ключ API VirusTotal" Width="290" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="ChangeVTKey" Margin="0,0,0,10"/>
-        <Button Grid.Row="6" Content="Сохранить" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="Save"/>
+        <CheckBox Grid.Row="3" x:Name="BlockCheckbox" Content="{x:Static res:Resources.BlockFiles}" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" Foreground="White"/>
+        <CheckBox Grid.Row="4" x:Name="AutoRunCheckbox" Content="{x:Static res:Resources.Autorun}" FontSize="16" FontWeight="Bold" Margin="10,10,0,15" Foreground="White"/>
+        <Button Grid.Row="5" Content="{x:Static res:Resources.ChangeVTKey}" Width="290" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="ChangeVTKey" Margin="0,0,0,10"/>
+        <Button Grid.Row="6" Content="{x:Static res:Resources.Save}" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="Save"/>
     </Grid>
 </Window>

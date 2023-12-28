@@ -21,7 +21,7 @@ namespace AutoTotal {
                 response.EnsureSuccessStatusCode();
             }
             catch (HttpRequestException ex) {
-                MessageBox.Show(ex.Message.Contains("Unauthorized") ? "Неверный ключ!" : "Ошибка проверки ключа: " + ex.Message, "Проверка ключа", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.Contains("Unauthorized") ? Properties.Resources.InvalidKey : Properties.Resources.CheckKeyError + ex.Message, Properties.Resources.CheckingKey, MessageBoxButton.OK, MessageBoxImage.Error);
                 SaveButton.IsEnabled = true;
                 return;
             }
@@ -30,7 +30,7 @@ namespace AutoTotal {
             Properties.Settings.Default.Save();
             Data.notificationManager.Show(new NotificationContent {
                 Title = "AutoTotal",
-                Message = "Ключ изменён!",
+                Message = Properties.Resources.KeyChanged,
                 Type = NotificationType.Notification,
                 TrimType = NotificationTextTrimType.NoTrim,
                 Icon = new BitmapImage(new Uri("pack://application:,,,/res/virustotal.png")),
@@ -39,7 +39,7 @@ namespace AutoTotal {
         }
 
         private void Help(object sender, RoutedEventArgs e) {
-            Process.Start("explorer", "https://github.com/ImMALWARE/AutoTotal/wiki/%D0%9F%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-API-%D0%BA%D0%BB%D1%8E%D1%87%D0%B0-VirusTotal");
+            Process.Start("explorer", Properties.Resources.WikiLink);
         }
     }
 }

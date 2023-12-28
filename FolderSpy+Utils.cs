@@ -72,7 +72,7 @@ namespace AutoTotal {
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                     Data.notificationManager.Show(new NotificationContent {
                         Title = "AutoTotal",
-                        Message = "Указанный файл не существует",
+                        Message = Properties.Resources.FileDoesntExist,
                         Type = NotificationType.Error,
                         TrimType = NotificationTextTrimType.NoTrim,
                         Icon = new BitmapImage(new Uri("pack://application:,,,/res/error.png"))
@@ -86,7 +86,7 @@ namespace AutoTotal {
             System.Windows.Application.Current.Dispatcher.Invoke(() => {
                 Data.notificationManager.Show(new NotificationContent {
                     Title = "AutoTotal",
-                    Message = "Начато сканирование " + Path.GetFileName(path),
+                    Message = Properties.Resources.Scanning + Path.GetFileName(path),
                     Type = NotificationType.Notification,
                     TrimType = NotificationTextTrimType.NoTrim,
                     Icon = Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage(),
@@ -101,7 +101,7 @@ namespace AutoTotal {
                 response = await httpClient.GetAsync("https://www.virustotal.com/api/v3/files/" + md5);
             }
             catch (HttpRequestException) {
-                MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! Проверьте подключение к интернету!", "AutoTotal — Ошибка сканирования", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Resources.CheckInternetConnection.Replace("%name%", Path.GetFileName(path)), Properties.Resources.ScanError, MessageBoxButton.OK, MessageBoxImage.Error);
                 if (!ContinueRun) Environment.Exit(1);
                 return;
             }
@@ -112,12 +112,12 @@ namespace AutoTotal {
                 // Файла нет на VT, нужно загружать
                 long size = new FileInfo(path).Length;
                 if (size / 1048576 >= 650) {
-                    MessageBox.Show(Path.GetFileName(path) + "весит больше 650 МБ, его нельзя просканировать на VirusTotal! Будьте осторожны, убедитесь, что источнику можно доверять!", "AutoTotal - Файл не просканирован", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(Path.GetFileName(path) + Properties.Resources.FileTooBig, Properties.Resources.ScanError, MessageBoxButton.OK, MessageBoxImage.Warning);
                     if (!ContinueRun) Environment.Exit(1);
                     return;
                 }
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    Data.progressbars.Add(path, Data.notificationManager.ShowProgressBar("Отправка " + Path.GetFileName(path) + " на VirusTotal", false, false, "", true, 1U, "", icon: Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage()));
+                    Data.progressbars.Add(path, Data.notificationManager.ShowProgressBar(Properties.Resources.Uploading.Replace("%name%", Path.GetFileName(path)), false, false, "", true, 1U, "...", icon: Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage()));
                 });
                 try {
                     string uploadUrl = size / 1048576 < 32 ?
@@ -140,7 +140,7 @@ namespace AutoTotal {
                         response = await httpClient.PostAsync(uploadUrl, multi, Data.progressbars[path].Cancel);
                     }
                     catch (HttpRequestException) {
-                        MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! Проверьте подключение к интернету!", "AutoTotal — Ошибка сканирования", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(Properties.Resources.CheckInternetConnection.Replace("%name%", Path.GetFileName(path)), Properties.Resources.ScanError, MessageBoxButton.OK, MessageBoxImage.Error);
                         System.Windows.Application.Current.Dispatcher.Invoke(() => {
                             Data.progressbars[path].Dispose();
                             Data.progressbars.Remove(path);
@@ -160,7 +160,7 @@ namespace AutoTotal {
                     string url = JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync())!["data"]!["links"]!["self"]!.ToString();
                     System.Windows.Application.Current.Dispatcher.Invoke(() => {
                         Data.progressbars[path].Dispose();
-                        Data.progressbars[path] = Data.notificationManager.ShowProgressBar("VirusTotal сканирует " + Path.GetFileName(path), false, false, "", true, 1U, "", icon: Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage());
+                        Data.progressbars[path] = Data.notificationManager.ShowProgressBar(Properties.Resources.IsScanning + Path.GetFileName(path), false, false, "", true, 1U, "", icon: Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage());
                     });
 
                     // Ждём, когда сканирование завершится
@@ -168,7 +168,7 @@ namespace AutoTotal {
                         response = await httpClient.GetAsync(url);
                         result = JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync())!;
                         if (result["error"]?["code"]?.ToString() == "QuotaExceededError") {
-                            MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! К сожалению, достигнут лимит использования API VirusTotal. Попробуйте просканировать снова через некоторое время. Либо создайте новый аккаунт VirusTotal и измените ключ на новый.", "AutoTotal — Лимит API VirusTotal", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(Properties.Resources.QuotaExceeded.Replace("%name%", Path.GetFileName(path)), Properties.Resources.TitleLimit, MessageBoxButton.OK, MessageBoxImage.Error);
                             if (!ContinueRun) Environment.Exit(1);
                             return;
                         }
@@ -177,7 +177,7 @@ namespace AutoTotal {
                     }
                 }
                 catch (HttpRequestException) {
-                    MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! Проверьте подключение к интернету!", "AutoTotal — Ошибка сканирования", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Resources.CheckInternetConnection.Replace("%name%", Path.GetFileName(path)), Properties.Resources.ScanError, MessageBoxButton.OK, MessageBoxImage.Error);
                     System.Windows.Application.Current.Dispatcher.Invoke(() => {
                         Data.progressbars[path].Dispose();
                         Data.progressbars.Remove(path);
@@ -192,7 +192,7 @@ namespace AutoTotal {
                 });
             }
             else if (result["error"]?["code"]?.ToString() == "QuotaExceededError") {
-                MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! К сожалению, достигнут лимит использования API VirusTotal. Попробуйте просканировать снова через некоторое время. Либо создайте новый аккаунт VirusTotal и измените ключ на новый.", "AutoTotal — Лимит API VirusTotal", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Resources.QuotaExceeded.Replace("%name%", Path.GetFileName(path)), Properties.Resources.TitleLimit, MessageBoxButton.OK, MessageBoxImage.Error);
                 if (!ContinueRun) Environment.Exit(1);
                 return;
             }
@@ -200,14 +200,14 @@ namespace AutoTotal {
                 // Если файл в данный момент сканируется, ожидаем завершения
                 if (result["data"]!["attributes"]!["last_analysis_date"] == null) {
                     System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                        Data.progressbars.Add(path, Data.notificationManager.ShowProgressBar("VirusTotal сканирует " + Path.GetFileName(path), false, false, "", true, 1U, "Отправка файла", icon: Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage()));
+                        Data.progressbars.Add(path, Data.notificationManager.ShowProgressBar(Properties.Resources.IsScanning + Path.GetFileName(path), false, false, "", true, 1U, "Отправка файла", icon: Icon.ExtractAssociatedIcon(path)?.ToBitmap().ToBitmapImage()));
                     });
                     try {
                         while (true) {
                             response = await httpClient.GetAsync(result["data"]!["links"]!["self"]!.ToString());
                             result = JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync())!;
                             if (result["error"]?["code"]?.ToString() == "QuotaExceededError") {
-                                MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! К сожалению, достигнут лимит использования API VirusTotal. Попробуйте просканировать снова через некоторое время. Либо создайте новый аккаунт VirusTotal и измените ключ на новый.", "AutoTotal — Лимит API VirusTotal", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show(Properties.Resources.QuotaExceeded.Replace("%name%", Path.GetFileName(path)), Properties.Resources.TitleLimit, MessageBoxButton.OK, MessageBoxImage.Error);
                                 if (!ContinueRun) Environment.Exit(1);
                                 return;
                             }
@@ -216,7 +216,7 @@ namespace AutoTotal {
                         }
                     }
                     catch (HttpRequestException) {
-                        MessageBox.Show("Файл " + Path.GetFileName(path) + " не просканирован! Проверьте подключение к интернету!", "AutoTotal — Ошибка сканирования", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(Properties.Resources.CheckInternetConnection.Replace("%name%", Path.GetFileName(path)), Properties.Resources.ScanError, MessageBoxButton.OK, MessageBoxImage.Error);
                         System.Windows.Application.Current.Dispatcher.Invoke(() => {
                             Data.progressbars[path].Dispose();
                             Data.progressbars.Remove(path);
@@ -235,29 +235,29 @@ namespace AutoTotal {
                 NotificationContent content = new() {
                     TrimType = NotificationTextTrimType.NoTrim,
                     LeftButtonAction = () => Process.Start(new ProcessStartInfo { FileName = "cmd.exe", Arguments = $"/c start \"\" \"{path}\"", UseShellExecute = true }),
-                    LeftButtonContent = "Запустить",
-                    Message = detects + " антивирусов пометили файл опасным"
+                    LeftButtonContent = Properties.Resources.Run,
+                    Message = detects + Properties.Resources.AVsDetected
                 };
                 if (detects == 0) {
                     content.Type = NotificationType.Notification;
-                    content.Title = Path.GetFileName(path) + " чист!";
-                    content.Message = "Ни один антивирус не пометил его опасным";
+                    content.Title = Path.GetFileName(path) + Properties.Resources.Clean;
+                    content.Message = Properties.Resources._0detects;
                     content.Icon = new BitmapImage(new Uri("pack://application:,,,/res/like.png"));
                 }
                 else if (detects < 5) {
                     content.Type = NotificationType.Warning;
-                    content.Title = Path.GetFileName(path) + " подозрителен!";
+                    content.Title = Path.GetFileName(path) + Properties.Resources.Suspicious;
                     content.LeftButtonAction = () => Process.Start("explorer", "https://virustotal.com/gui/file/" + md5);
-                    content.LeftButtonContent = "Показать отчёт";
-                    content.RightButtonContent = "Удалить файл";
+                    content.LeftButtonContent = Properties.Resources.ShowReport;
+                    content.RightButtonContent = Properties.Resources.Delete;
                     content.RightButtonAction = () => { File.Delete(path); };
                 }
                 else {
                     content.Type = NotificationType.Error;
-                    content.Title = Path.GetFileName(path) + " опасен!";
+                    content.Title = Path.GetFileName(path) + Properties.Resources.Dangerous;
                     content.LeftButtonAction = () => Process.Start("explorer", "https://virustotal.com/gui/file/" + md5);
-                    content.LeftButtonContent = "Показать отчёт";
-                    content.RightButtonContent = "Удалить файл";
+                    content.LeftButtonContent = Properties.Resources.ShowReport;
+                    content.RightButtonContent = Properties.Resources.Delete;
                     content.RightButtonAction = () => { File.Delete(path); };
                 }
                 Data.notificationManager.Show(content, expirationTime: TimeSpan.FromSeconds(10), onClose: () => notificationWaiter.TrySetResult(true));
@@ -270,10 +270,10 @@ namespace AutoTotal {
             int pos = 0;
             while (!fs.CanRead || pos != 100) {
                 pos = (int)Math.Round(100 * (fs.Position / (double)fs.Length));
-                System.Windows.Application.Current.Dispatcher.Invoke(() => progressbar.Report((pos, "", "Отправка " + name + " на VirusTotal", true)));
+                System.Windows.Application.Current.Dispatcher.Invoke(() => progressbar.Report((pos, "", Properties.Resources.Uploading.Replace("%name%", name), true)));
                 Thread.Sleep(100);
             }
-            System.Windows.Application.Current.Dispatcher.Invoke(() => progressbar.Report((0, "", "VirusTotal обрабатывает " + name, false)));
+            System.Windows.Application.Current.Dispatcher.Invoke(() => progressbar.Report((0, "", Properties.Resources.Processing + name, false)));
         }
     }
 }

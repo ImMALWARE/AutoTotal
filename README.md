@@ -1,5 +1,5 @@
-# AutoTotal -  Автоматическое сканирование файлов из Загрузок (и не только) на VirusTotal
-
+# AutoTotal - автоматическое сканирование файлов из Загрузок (и не только) на VirusTotal
+[README in English](https://github.com/ImMALWARE/AutoTotal/blob/master/README_EN.md)
 ## Добавьте все папки, куда вы скачиваете файлы
 ![Добавление папок](https://i.imgur.com/9YP7ACu.png) \
 По умолчанию добавляется папка Загрузки

@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="0detects" xml:space="preserve">
+    <value>Ни один антивирус не пометил его опасным</value>
+  </data>
+  <data name="AddFolder" xml:space="preserve">
+    <value>Добавить папку</value>
+  </data>
+  <data name="AddFolderForce" xml:space="preserve">
+    <value>Добавьте папку в окне настроек!</value>
+  </data>
+  <data name="AddingFolder" xml:space="preserve">
+    <value>Добавление папки</value>
+  </data>
+  <data name="ATSettings" xml:space="preserve">
+    <value>AutoTotal — Настройки</value>
+  </data>
+  <data name="Autorun" xml:space="preserve">
+    <value>Автозапуск приложения с Windows</value>
+  </data>
+  <data name="AVsDetected" xml:space="preserve">
+    <value> антивирусов пометили файл опасным</value>
+  </data>
+  <data name="BlockFiles" xml:space="preserve">
+    <value>Блокировать файлы на время сканирования</value>
+  </data>
+  <data name="ChangeVTKey" xml:space="preserve">
+    <value>Изменить ключ API VirusTotal</value>
+  </data>
+  <data name="ChangingVTKey" xml:space="preserve">
+    <value>Изменение ключа API VirusTotal</value>
+  </data>
+  <data name="CheckInternetConnection" xml:space="preserve">
+    <value>Файл %name% не просканирован! Проверьте подключение к интернету!</value>
+  </data>
+  <data name="CheckKeyError" xml:space="preserve">
+    <value>Ошибка проверки ключа: </value>
+  </data>
+  <data name="Clean" xml:space="preserve">
+    <value> чист!</value>
+  </data>
+  <data name="Dangerous" xml:space="preserve">
+    <value> опасен!</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить файл</value>
+  </data>
+  <data name="DisappearedFolder" xml:space="preserve">
+    <value>Несуществующая папка была удалена из списка</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="FileDoesntExist" xml:space="preserve">
+    <value>Указанный файл не существует</value>
+  </data>
+  <data name="FileTooBig" xml:space="preserve">
+    <value>весит больше 650 МБ, его нельзя просканировать на VirusTotal! Будьте осторожны, убедитесь, что источнику можно доверять!</value>
+  </data>
+  <data name="FinishFirstSetup" xml:space="preserve">
+    <value>Сначала завершите первую настройку!</value>
+  </data>
+  <data name="FoldersList" xml:space="preserve">
+    <value>Список папок</value>
+  </data>
+  <data name="HowToGet" xml:space="preserve">
+    <value>Как получить?</value>
+  </data>
+  <data name="InvalidKey" xml:space="preserve">
+    <value>Неверный ключ!</value>
+  </data>
+  <data name="IsScanning" xml:space="preserve">
+    <value>VirusTotal сканирует</value>
+  </data>
+  <data name="KeyChanged" xml:space="preserve">
+    <value>Ключ изменён!</value>
+  </data>
+  <data name="MinusFolder" xml:space="preserve">
+    <value>- папка</value>
+  </data>
+  <data name="PlusFolder" xml:space="preserve">
+    <value>+ папка</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>VirusTotal обрабатывает</value>
+  </data>
+  <data name="ProgramWillAutostart" xml:space="preserve">
+    <value>Программа будет запускаться автоматически при старте Windows! Это можно изменить в настройках</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Файл %name% не просканирован! К сожалению, достигнут лимит использования API VirusTotal. Попробуйте просканировать снова через некоторое время. Либо создайте новый аккаунт VirusTotal и измените ключ на новый.</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="ScanError" xml:space="preserve">
+    <value>AutoTotal - ошибка сканирования</value>
+  </data>
+  <data name="ScanFile" xml:space="preserve">
+    <value>Просканировать файл...</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Начато сканирование </value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="ShowReport" xml:space="preserve">
+    <value>Показать отчёт</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>Программа была запущена в фоне, используйте значок в трее для взаимодействия</value>
+  </data>
+  <data name="Suspicious" xml:space="preserve">
+    <value> подозрителен!</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>Отправка %name% на VirusTotal</value>
+  </data>
+  <data name="WikiLink" xml:space="preserve">
+    <value>https://github.com/ImMALWARE/AutoTotal/wiki/%D0%9F%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-API-%D0%BA%D0%BB%D1%8E%D1%87%D0%B0-VirusTotal</value>
+  </data>
+  <data name="WorkingInBackground" xml:space="preserve">
+    <value>AutoTotal работает в фоне</value>
+  </data>
+</root>

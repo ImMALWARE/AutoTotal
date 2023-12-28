@@ -23,7 +23,7 @@ namespace AutoTotal {
             if (string.IsNullOrEmpty(AutoTotal.Properties.Settings.Default.VTKey)) {
                 // Первый запуск
                 if (!isOnlyInstance) {
-                    System.Windows.MessageBox.Show("Сначала завершите первую настройку!", "AutoTotal", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show(AutoTotal.Properties.Resources.FinishFirstSetup, "AutoTotal", MessageBoxButton.OK, MessageBoxImage.Error);
                     Environment.Exit(0);
                 }
                 new SetKeyWindow().ShowDialog();
@@ -32,11 +32,11 @@ namespace AutoTotal {
                 if (!Autorun.Exists()) Autorun.Add();
                 Data.notificationManager.Show(new NotificationContent {
                     Title = "AutoTotal",
-                    Message = "Программа будет запускаться автоматически при старте Windows! Это можно изменить в настройках",
+                    Message = AutoTotal.Properties.Resources.ProgramWillAutostart,
                     Type = NotificationType.Information,
                     TrimType = NotificationTextTrimType.NoTrim,
                     LeftButtonAction = () => ShowSettings(),
-                    LeftButtonContent = "Настройки"
+                    LeftButtonContent = AutoTotal.Properties.Resources.Settings
                 }, expirationTime: TimeSpan.FromSeconds(10));
             }
 
@@ -54,13 +54,13 @@ namespace AutoTotal {
                 NotifyIcon notifyIcon = new() {
                     Visible = true,
                     Icon = new Icon(AppDomain.CurrentDomain.BaseDirectory+"\\res\\at.ico"),
-                    Text = "AutoTotal работает в фоне",
+                    Text = AutoTotal.Properties.Resources.WorkingInBackground,
                     ContextMenuStrip = new ContextMenuStrip {
                         Items = {
-                            new ToolStripMenuItem("Настройки", null, (s, e) => ShowSettings()),
-                            new ToolStripMenuItem("Добавить папку", null, (s, e) => {
+                            new ToolStripMenuItem(AutoTotal.Properties.Resources.Settings, null, (s, e) => ShowSettings()),
+                            new ToolStripMenuItem(AutoTotal.Properties.Resources.AddFolder, null, (s, e) => {
                                 if (Data.settings?.IsVisible ?? false) {
-                                    System.Windows.MessageBox.Show("Добавьте папку в окне настроек!", "Добавление папки", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    System.Windows.MessageBox.Show(AutoTotal.Properties.Resources.AddFolderForce, AutoTotal.Properties.Resources.AddingFolder, MessageBoxButton.OK, MessageBoxImage.Warning);
                                     return;
                                 }
                                 using var folderBrowserDialog = new FolderBrowserDialog();
@@ -74,24 +74,24 @@ namespace AutoTotal {
                                     }
                                 }
                             }),
-                            new ToolStripMenuItem("Просканировать файл...", null, (s, e) => {
+                            new ToolStripMenuItem(AutoTotal.Properties.Resources.ScanFile, null, (s, e) => {
                                 using var openFileDialog = new System.Windows.Forms.OpenFileDialog();
                                 DialogResult result = openFileDialog.ShowDialog();
                                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(openFileDialog.FileName)) Task.Run(async () => await Utils.ScanFile(openFileDialog.FileName));
                             }),
-                            new ToolStripMenuItem("Изменить ключ API VirusTotal", null, (s, e) => new SetKeyWindow().Show()),
-                            new ToolStripMenuItem("Выход", null, (s, e) => Environment.Exit(1))
+                            new ToolStripMenuItem(AutoTotal.Properties.Resources.ChangeVTKey, null, (s, e) => new SetKeyWindow().Show()),
+                            new ToolStripMenuItem(AutoTotal.Properties.Resources.Exit, null, (s, e) => Environment.Exit(1))
                         }
                     }
                 };
                 if (!e.Args.Contains("/autorun")) {
                     Data.notificationManager.Show(new NotificationContent {
                         Title = "AutoTotal",
-                        Message = "Программа была запущена в фоне, используйте значок в трее для взаимодействия",
+                        Message = AutoTotal.Properties.Resources.Started,
                         Type = NotificationType.Notification,
                         TrimType = NotificationTextTrimType.NoTrim,
                         LeftButtonAction = () => ShowSettings(),
-                        LeftButtonContent = "Настройки",
+                        LeftButtonContent = AutoTotal.Properties.Resources.Settings,
                         Icon = new BitmapImage(new Uri("pack://application:,,,/res/virustotal.png")),
                     }, expirationTime: TimeSpan.FromSeconds(5));
                 }
@@ -100,12 +100,12 @@ namespace AutoTotal {
                     if (!Directory.Exists(path)) {
                         ToRemove.Add(path);
                         Data.notificationManager.Show(new NotificationContent {
-                            Title = "Несуществующая папка была удалена из списка",
+                            Title = AutoTotal.Properties.Resources.DisappearedFolder,
                             Message = path,
                             Type = NotificationType.Information,
                             TrimType = NotificationTextTrimType.NoTrim,
                             LeftButtonAction = () => ShowSettings(),
-                            LeftButtonContent = "Настройки"
+                            LeftButtonContent = AutoTotal.Properties.Resources.Settings
                         }, expirationTime: TimeSpan.FromSeconds(10));
                     }
                     else FolderSpy.Add(path);
