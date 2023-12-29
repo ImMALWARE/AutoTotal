@@ -187,7 +187,7 @@
     <value>Неверный ключ!</value>
   </data>
   <data name="IsScanning" xml:space="preserve">
-    <value>VirusTotal сканирует</value>
+    <value>VirusTotal сканирует </value>
   </data>
   <data name="KeyChanged" xml:space="preserve">
     <value>Ключ изменён!</value>
@@ -199,7 +199,7 @@
     <value>+ папка</value>
   </data>
   <data name="Processing" xml:space="preserve">
-    <value>VirusTotal обрабатывает</value>
+    <value>VirusTotal обрабатывает </value>
   </data>
   <data name="ProgramWillAutostart" xml:space="preserve">
     <value>Программа будет запускаться автоматически при старте Windows! Это можно изменить в настройках</value>
