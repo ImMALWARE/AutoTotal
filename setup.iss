@@ -1,5 +1,5 @@
 #define MyAppName "AutoTotal"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "malw.ru"
 #define MyAppURL "https://malw.ru/autototal"
 #define MyAppExeName "AutoTotal.exe"
@@ -16,9 +16,9 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 PrivilegesRequired=admin
-OutputDir=C:\Users\malw\Desktop
+OutputDir=C:\Users\MALWARE\Desktop
 OutputBaseFilename=AutoTotalSetup
-SetupIconFile=C:\Users\malw\Documents\AutoTotal\atsetup.ico
+SetupIconFile=C:\Users\MALWARE\Documents\AutoTotal\atsetup.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -49,7 +49,7 @@ Root: HKCR; Subkey: "*\shell\AutoTotal"; ValueType: string; ValueName: "Icon"; V
 Root: HKCR; Subkey: "*\shell\AutoTotal\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" /scan ""%1"""; Tasks: addcontextmenu; Flags: uninsdeletekey
 
 [Files]
-Source: "C:\Users\malw\Documents\AutoTotal\bin\Release\net7.0-windows10.0.19041.0\win-x64\publish\*"; Excludes: "AutoTotal.dll.config AutoTotal.pdb"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\MALWARE\Documents\AutoTotal\bin\Release\net7.0-windows10.0.19041.0\win-x64\publish\*"; Excludes: "AutoTotal.pdb, AutoTotal.runtimeconfig.json, createdump.exe"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: startmenuicon

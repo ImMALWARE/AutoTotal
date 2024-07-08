@@ -79,8 +79,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="+ папка" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="AddFolder"/>
-            <Button Grid.Column="1" Content="- папка" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="DelFolder"/>
+            <Button Grid.Column="0" Content="{x:Static res:Resources.PlusFolder}" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="AddFolder"/>
+            <Button Grid.Column="1" Content="{x:Static res:Resources.MinusFolder}" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="DelFolder"/>
         </Grid>
         <CheckBox Grid.Row="3" x:Name="BlockCheckbox" Content="{x:Static res:Resources.BlockFiles}" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" Foreground="White"/>
         <CheckBox Grid.Row="4" x:Name="AutoRunCheckbox" Content="{x:Static res:Resources.Autorun}" FontSize="16" FontWeight="Bold" Margin="10,10,0,15" Foreground="White"/>

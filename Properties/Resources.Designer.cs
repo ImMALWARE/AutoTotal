@@ -133,6 +133,15 @@ namespace AutoTotal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на I cannot track when the download from Telegram Desktop will finish, so you will need to confirm it manually.
+        /// </summary>
+        public static string CantTrackTelegram {
+            get {
+                return ResourceManager.GetString("CantTrackTelegram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Change VirusTotal API key.
         /// </summary>
         public static string ChangeVTKey {
@@ -205,11 +214,38 @@ namespace AutoTotal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Is %name% already download?.
+        /// </summary>
+        public static string DidFileDownload {
+            get {
+                return ResourceManager.GetString("DidFileDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Non-existing folder was deleted from the list.
         /// </summary>
         public static string DisappearedFolder {
             get {
                 return ResourceManager.GetString("DisappearedFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Do not scan.
+        /// </summary>
+        public static string DontScan {
+            get {
+                return ResourceManager.GetString("DontScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Downloaded!.
+        /// </summary>
+        public static string Downloaded {
+            get {
+                return ResourceManager.GetString("Downloaded", resourceCulture);
             }
         }
         
@@ -304,6 +340,15 @@ namespace AutoTotal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на + folder.
         /// </summary>
         public static string PlusFolder {
@@ -354,6 +399,15 @@ namespace AutoTotal.Properties {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Scan.
+        /// </summary>
+        public static string Scan {
+            get {
+                return ResourceManager.GetString("Scan", resourceCulture);
             }
         }
         
@@ -426,6 +480,15 @@ namespace AutoTotal.Properties {
         public static string TitleLimit {
             get {
                 return ResourceManager.GetString("TitleLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Scripts and PDFs are uploaded to VT only upon confirmation.
+        /// </summary>
+        public static string UploadedOnlyUponConfirmation {
+            get {
+                return ResourceManager.GetString("UploadedOnlyUponConfirmation", resourceCulture);
             }
         }
         

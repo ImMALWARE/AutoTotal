@@ -53,7 +53,7 @@ namespace AutoTotal {
             if (isOnlyInstance) {
                 NotifyIcon notifyIcon = new() {
                     Visible = true,
-                    Icon = new Icon(AppDomain.CurrentDomain.BaseDirectory+"\\res\\at.ico"),
+                    Icon = new Icon(AppDomain.CurrentDomain.BaseDirectory + "at.ico"),
                     Text = AutoTotal.Properties.Resources.WorkingInBackground,
                     ContextMenuStrip = new ContextMenuStrip {
                         Items = {

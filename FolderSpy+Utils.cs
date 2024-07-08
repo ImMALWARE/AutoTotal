@@ -23,6 +23,9 @@ namespace AutoTotal {
             ".ppam", ".ppsm", ".pptm", ".py", ".pyc", ".pyo", ".xlam", ".xlsm", ".xltm", ".hta",
             ".dll", ".sys", ".drv", ".zip", ".rar", ".7z", ".iso", ".img", ".tar", ".wim",
             ".xz"};
+        private static readonly string[] confirm_extensions = new string[9] {
+            ".bat", ".cmd", ".js", ".pdf", ".ps1", ".py", ".pyc", ".pyo", ".vbs"
+        };
 
         public static void Add(string? path) {
             if (path == null) return;
@@ -45,9 +48,50 @@ namespace AutoTotal {
 
         private static async Task OnFileCreated(object sender, FileSystemEventArgs e) {
             if (extensions.Contains(Path.GetExtension(e.FullPath), StringComparer.OrdinalIgnoreCase)) {
-                if (Properties.Settings.Default.BlockFiles) Blocker.Block(e.FullPath);
-                await Utils.ScanFile(e.FullPath);
-                if (Properties.Settings.Default.BlockFiles) Blocker.Unblock(e.FullPath);
+
+                async Task ScanTask() {
+                    if (Properties.Settings.Default.BlockFiles) Blocker.Block(e.FullPath);
+                    await Utils.ScanFile(e.FullPath);
+                    if (Properties.Settings.Default.BlockFiles) Blocker.Unblock(e.FullPath);
+                }
+
+                if (e.Name!.Contains("AyuGram Desktop\\") || e.Name.Contains("Telegram Desktop\\")) {
+                    TaskCompletionSource<bool> notificationWaiter = new();
+                    System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                        Data.notificationManager.Show(new NotificationContent {
+                            Title = Properties.Resources.DidFileDownload.Replace("%name%", Path.GetFileName(e.Name)),
+                            Message = Properties.Resources.CantTrackTelegram,
+                            Type = NotificationType.Notification,
+                            TrimType = NotificationTextTrimType.NoTrim,
+                            Icon = Icon.ExtractAssociatedIcon(e.FullPath)?.ToBitmap().ToBitmapImage(),
+                            LeftButtonContent = Properties.Resources.Downloaded,
+                            LeftButtonAction = () => notificationWaiter.TrySetResult(true),
+                            RightButtonContent = Properties.Resources.DontScan,
+                            RightButtonAction = () => notificationWaiter.TrySetResult(false)
+                        }, expirationTime: Timeout.InfiniteTimeSpan, onClose: () => notificationWaiter.TrySetResult(true));
+                    });
+                    await notificationWaiter.Task;
+                    if (notificationWaiter.Task.Result) await ScanTask();
+                    return;
+                }
+
+                if (confirm_extensions.Contains(Path.GetExtension(e.FullPath), StringComparer.OrdinalIgnoreCase)) {
+                    System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                        Data.notificationManager.Show(new NotificationContent {
+                            Title = $"{Properties.Resources.Scan} {Path.GetFileName(e.Name)}?",
+                            Message = Properties.Resources.UploadedOnlyUponConfirmation,
+                            Type = NotificationType.None,
+                            TrimType = NotificationTextTrimType.NoTrim,
+                            Icon = Icon.ExtractAssociatedIcon(e.FullPath)?.ToBitmap().ToBitmapImage(),
+                            LeftButtonAction = async () => await ScanTask(),
+                            LeftButtonContent = Properties.Resources.Scan,
+                            RightButtonContent = Properties.Resources.No,
+                            RightButtonAction = () => {},
+                        }, expirationTime: TimeSpan.FromSeconds(300));
+                    });
+                    return;
+                }
+                await ScanTask();
             }
         }
     }
@@ -95,7 +139,7 @@ namespace AutoTotal {
             string md5 = BitConverter.ToString(MD5.Create().ComputeHash(File.OpenRead(path))).Replace("-", "").ToLower();
             using HttpClient httpClient = new();
             httpClient.DefaultRequestHeaders.Add("x-apikey", Properties.Settings.Default.VTKey);
-            
+
             HttpResponseMessage response;
             try {
                 response = await httpClient.GetAsync("https://www.virustotal.com/api/v3/files/" + md5);
@@ -239,7 +283,7 @@ namespace AutoTotal {
                     Message = detects + Properties.Resources.AVsDetected
                 };
                 if (detects == 0) {
-                    content.Type = NotificationType.Notification;
+                    content.Type = NotificationType.Information;
                     content.Title = Path.GetFileName(path) + Properties.Resources.Clean;
                     content.Message = Properties.Resources._0detects;
                     content.Icon = new BitmapImage(new Uri("pack://application:,,,/res/like.png"));
@@ -249,16 +293,16 @@ namespace AutoTotal {
                     content.Title = Path.GetFileName(path) + Properties.Resources.Suspicious;
                     content.LeftButtonAction = () => Process.Start("explorer", "https://virustotal.com/gui/file/" + md5);
                     content.LeftButtonContent = Properties.Resources.ShowReport;
-                    content.RightButtonContent = Properties.Resources.Delete;
                     content.RightButtonAction = () => { File.Delete(path); };
+                    content.RightButtonContent = Properties.Resources.Delete;
                 }
                 else {
                     content.Type = NotificationType.Error;
                     content.Title = Path.GetFileName(path) + Properties.Resources.Dangerous;
                     content.LeftButtonAction = () => Process.Start("explorer", "https://virustotal.com/gui/file/" + md5);
                     content.LeftButtonContent = Properties.Resources.ShowReport;
-                    content.RightButtonContent = Properties.Resources.Delete;
                     content.RightButtonAction = () => { File.Delete(path); };
+                    content.RightButtonContent = Properties.Resources.Delete;
                 }
                 Data.notificationManager.Show(content, expirationTime: TimeSpan.FromSeconds(10), onClose: () => notificationWaiter.TrySetResult(true));
             });

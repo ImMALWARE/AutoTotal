@@ -141,11 +141,17 @@
   <data name="BlockFiles" xml:space="preserve">
     <value>Блокировать файлы на время сканирования</value>
   </data>
+  <data name="CantTrackTelegram" xml:space="preserve">
+    <value>Я не могу отследить, когда загрузка из Telegram Desktop завершится, поэтому придётся подтвердить скачивание вручную</value>
+  </data>
   <data name="ChangeVTKey" xml:space="preserve">
     <value>Изменить ключ API VirusTotal</value>
   </data>
   <data name="ChangingVTKey" xml:space="preserve">
     <value>Изменение ключа API VirusTotal</value>
+  </data>
+  <data name="CheckingKey" xml:space="preserve">
+    <value>Проверка ключа</value>
   </data>
   <data name="CheckInternetConnection" xml:space="preserve">
     <value>Файл %name% не просканирован! Проверьте подключение к интернету!</value>
@@ -162,8 +168,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Удалить файл</value>
   </data>
+  <data name="DidFileDownload" xml:space="preserve">
+    <value>%name% уже скачался?</value>
+  </data>
   <data name="DisappearedFolder" xml:space="preserve">
     <value>Несуществующая папка была удалена из списка</value>
+  </data>
+  <data name="DontScan" xml:space="preserve">
+    <value>Не сканировать</value>
+  </data>
+  <data name="Downloaded" xml:space="preserve">
+    <value>Скачался!</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Выход</value>
@@ -195,6 +210,9 @@
   <data name="MinusFolder" xml:space="preserve">
     <value>- папка</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
   <data name="PlusFolder" xml:space="preserve">
     <value>+ папка</value>
   </data>
@@ -212,6 +230,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Сканировать</value>
   </data>
   <data name="ScanError" xml:space="preserve">
     <value>AutoTotal - ошибка сканирования</value>
@@ -233,6 +254,12 @@
   </data>
   <data name="Suspicious" xml:space="preserve">
     <value> подозрителен!</value>
+  </data>
+  <data name="TitleLimit" xml:space="preserve">
+    <value>AutoTotal — лимит API VirusTotal</value>
+  </data>
+  <data name="UploadedOnlyUponConfirmation" xml:space="preserve">
+    <value>Скрипты и PDF загружаются на VT только по подтверждению</value>
   </data>
   <data name="Uploading" xml:space="preserve">
     <value>Отправка %name% на VirusTotal</value>

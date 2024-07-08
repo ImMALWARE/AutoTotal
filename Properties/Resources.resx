@@ -141,6 +141,9 @@
   <data name="BlockFiles" xml:space="preserve">
     <value>Block files until scanned</value>
   </data>
+  <data name="CantTrackTelegram" xml:space="preserve">
+    <value>I cannot track when the download from Telegram Desktop will finish, so you will need to confirm it manually</value>
+  </data>
   <data name="ChangeVTKey" xml:space="preserve">
     <value>Change VirusTotal API key</value>
   </data>
@@ -165,8 +168,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete file</value>
   </data>
+  <data name="DidFileDownload" xml:space="preserve">
+    <value>Is %name% already download?</value>
+  </data>
   <data name="DisappearedFolder" xml:space="preserve">
     <value>Non-existing folder was deleted from the list</value>
+  </data>
+  <data name="DontScan" xml:space="preserve">
+    <value>Do not scan</value>
+  </data>
+  <data name="Downloaded" xml:space="preserve">
+    <value>Downloaded!</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
@@ -198,6 +210,9 @@
   <data name="MinusFolder" xml:space="preserve">
     <value>- folder</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="PlusFolder" xml:space="preserve">
     <value>+ folder</value>
   </data>
@@ -215,6 +230,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Scan</value>
   </data>
   <data name="ScanError" xml:space="preserve">
     <value>AutoTotal — Scan error</value>
@@ -239,6 +257,9 @@
   </data>
   <data name="TitleLimit" xml:space="preserve">
     <value>AutoTotal — VirusTotal API limit</value>
+  </data>
+  <data name="UploadedOnlyUponConfirmation" xml:space="preserve">
+    <value>Scripts and PDFs are uploaded to VT only upon confirmation</value>
   </data>
   <data name="Uploading" xml:space="preserve">
     <value>Uploading %name% to VirusTotal</value>
