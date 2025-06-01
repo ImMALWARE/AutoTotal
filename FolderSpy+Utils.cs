@@ -47,7 +47,9 @@ namespace AutoTotal {
         }
 
         private static async Task OnFileCreated(object sender, FileSystemEventArgs e) {
+
             if (extensions.Contains(Path.GetExtension(e.FullPath), StringComparer.OrdinalIgnoreCase)) {
+                if (new FileInfo(e.FullPath).Length == 0) return;
 
                 async Task ScanTask() {
                     if (Properties.Settings.Default.BlockFiles) Blocker.Block(e.FullPath);
