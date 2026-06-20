@@ -1,7 +1,7 @@
 #define MyAppName "AutoTotal"
-#define MyAppVersion "1.2"
-#define MyAppPublisher "malw.ru"
-#define MyAppURL "https://malw.ru/autototal"
+#define MyAppVersion "1.3"
+#define MyAppPublisher "malw.link"
+#define MyAppURL "https://malw.link/autototal"
 #define MyAppExeName "AutoTotal.exe"
 
 [Setup]
@@ -15,13 +15,14 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
-PrivilegesRequired=admin
+PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=Setup
 OutputBaseFilename=AutoTotalSetup
 SetupIconFile=atsetup.ico
 Compression=lzma
 SolidCompression=yes
-WizardStyle=modern
+WizardStyle=modern dynamic
 UninstallDisplayIcon={app}\AutoTotal.exe
  
 [Languages]
@@ -44,12 +45,13 @@ Name: "addcontextmenu"; Description: "{cm:AddScanToContextMenu}"; GroupDescripti
 Name: "startmenuicon"; Description: "{cm:CreateStartMenuShortcut}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Registry]
-Root: HKCR; Subkey: "*\shell\AutoTotal"; ValueType: string; ValueName: ""; ValueData: "{cm:ScanOnVT}"; Tasks: addcontextmenu; Flags: uninsdeletekey
-Root: HKCR; Subkey: "*\shell\AutoTotal"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\{#MyAppExeName}"; Tasks: addcontextmenu; Flags: uninsdeletekey
-Root: HKCR; Subkey: "*\shell\AutoTotal\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" /scan ""%1"""; Tasks: addcontextmenu; Flags: uninsdeletekey
+Root: HKCR; Subkey: "*\shell\AutoTotal"; Flags: deletekey dontcreatekey noerror
+Root: HKA; Subkey: "Software\Classes\*\shell\AutoTotal"; ValueType: string; ValueName: ""; ValueData: "{cm:ScanOnVT}"; Tasks: addcontextmenu; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\*\shell\AutoTotal"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\{#MyAppExeName}"; Tasks: addcontextmenu; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\*\shell\AutoTotal\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" /scan ""%1"""; Tasks: addcontextmenu; Flags: uninsdeletekey
 
 [Files]
-Source: "bin\Release\net9.0-windows10.0.19041.0\*"; Excludes: "AutoTotal.pdb, AutoTotal.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "bin\Release\net9.0-windows10.0.19041.0\win-x64\publish\*"; Excludes: "AutoTotal.pdb, AutoTotal.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: startmenuicon

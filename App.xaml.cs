@@ -1,5 +1,6 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using Notification.Wpf;
+using Notification.Wpf.Constants;
 using Notification.Wpf.Classes;
 using System.Collections.Specialized;
 using System.IO;
@@ -19,6 +20,7 @@ namespace AutoTotal {
     public partial class App : Application {
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
+            NotificationConstants.DefaultProgressButtonContent = AutoTotal.Properties.Resources.Cancel;
             Data.mutex = new Mutex(true, "AutoTotalMutex", out bool isOnlyInstance);
             if (string.IsNullOrEmpty(AutoTotal.Properties.Settings.Default.VTKey)) {
                 // Первый запуск
@@ -51,11 +53,19 @@ namespace AutoTotal {
             // Сканирование из командной строки
             if (e.Args.Length == 2 && e.Args[0] == "/scan") Task.Run(async () => await Utils.ScanFile(e.Args[1], isOnlyInstance));
             if (isOnlyInstance) {
+                bool dark;
+                try {
+                    dark = (int)(Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", 1) ?? 1) == 0;
+                }
+                catch {
+                    dark = false;
+                }
                 NotifyIcon notifyIcon = new() {
                     Visible = true,
                     Icon = new Icon(AppDomain.CurrentDomain.BaseDirectory + "at.ico"),
                     Text = AutoTotal.Properties.Resources.WorkingInBackground,
                     ContextMenuStrip = new ContextMenuStrip {
+                        Renderer = dark ? new DarkModeRenderer() : new ToolStripProfessionalRenderer(),
                         Items = {
                             new ToolStripMenuItem(AutoTotal.Properties.Resources.Settings, null, (s, e) => ShowSettings()),
                             new ToolStripMenuItem(AutoTotal.Properties.Resources.AddFolder, null, (s, e) => {

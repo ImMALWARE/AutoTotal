@@ -141,6 +141,9 @@
   <data name="BlockFiles" xml:space="preserve">
     <value>Блокировать файлы на время сканирования</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
   <data name="CantTrackTelegram" xml:space="preserve">
     <value>Я не могу отследить, когда загрузка из Telegram Desktop завершится, поэтому придётся подтвердить скачивание вручную</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="Exit" xml:space="preserve">
     <value>Выход</value>
   </data>
+  <data name="ExplorerItem" xml:space="preserve">
+    <value>Добавить "Сканировать на VT" в контекстное меню файлов</value>
+  </data>
   <data name="FileDoesntExist" xml:space="preserve">
     <value>Указанный файл не существует</value>
   </data>
@@ -206,6 +212,9 @@
   </data>
   <data name="KeyChanged" xml:space="preserve">
     <value>Ключ изменён!</value>
+  </data>
+  <data name="LastScanDate" xml:space="preserve">
+    <value>Последнее сканирование было </value>
   </data>
   <data name="MinusFolder" xml:space="preserve">
     <value>- папка</value>
@@ -240,8 +249,14 @@
   <data name="ScanFile" xml:space="preserve">
     <value>Просканировать файл...</value>
   </data>
+  <data name="ScanFileOnVT" xml:space="preserve">
+    <value>Сканировать на VirusTotal</value>
+  </data>
   <data name="Scanning" xml:space="preserve">
     <value>Начато сканирование </value>
+  </data>
+  <data name="SendingFile" xml:space="preserve">
+    <value>Отправка файла</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Настройки</value>

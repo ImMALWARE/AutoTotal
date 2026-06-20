@@ -19,7 +19,7 @@ namespace AutoTotal.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -129,6 +129,15 @@ namespace AutoTotal.Properties {
         public static string BlockFiles {
             get {
                 return ResourceManager.GetString("BlockFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -259,6 +268,15 @@ namespace AutoTotal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Add &quot;Scan on VT&quot; to files&apos; context menu.
+        /// </summary>
+        public static string ExplorerItem {
+            get {
+                return ResourceManager.GetString("ExplorerItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на This file doesn&apos;t exist.
         /// </summary>
         public static string FileDoesntExist {
@@ -327,6 +345,15 @@ namespace AutoTotal.Properties {
         public static string KeyChanged {
             get {
                 return ResourceManager.GetString("KeyChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Last scan: .
+        /// </summary>
+        public static string LastScanDate {
+            get {
+                return ResourceManager.GetString("LastScanDate", resourceCulture);
             }
         }
         
@@ -430,11 +457,29 @@ namespace AutoTotal.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Scan on VirusTotal.
+        /// </summary>
+        public static string ScanFileOnVT {
+            get {
+                return ResourceManager.GetString("ScanFileOnVT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Scanning .
         /// </summary>
         public static string Scanning {
             get {
                 return ResourceManager.GetString("Scanning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sending file.
+        /// </summary>
+        public static string SendingFile {
+            get {
+                return ResourceManager.GetString("SendingFile", resourceCulture);
             }
         }
         

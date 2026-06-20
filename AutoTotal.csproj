@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -12,18 +12,19 @@
     <ApplicationIcon>at.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>AutoTotal</Title>
-    <Authors>malw.ru</Authors>
+    <Authors>malw.link</Authors>
+    <Company>malw.link</Company>
     <Description>Автоматическое сканирование файлов из Загрузок (и не только) на VirusTotal</Description>
-    <PackageProjectUrl>https://malw.ru/autototal</PackageProjectUrl>
+    <PackageProjectUrl>https://malw.link/autototal</PackageProjectUrl>
     <PackageIcon>packageicon.png</PackageIcon>
     <RepositoryUrl>https://github.com/ImMALWARE/AutoTotal</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>VirusTotal, антивирус, сканирование, VT, автоматизация</PackageTags>
     <PackageOutputPath>$(OutputPath)</PackageOutputPath>
-    <NeutralLanguage>ru</NeutralLanguage>
+    <NeutralLanguage>en-US</NeutralLanguage>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1</FileVersion>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+    <FileVersion>1.3</FileVersion>
     <Version>$(VersionPrefix)</Version>
   </PropertyGroup>
 	

@@ -1,6 +1,7 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
+using MessageBox = System.Windows.MessageBox;
 namespace AutoTotal {
     public partial class SettingsWindow : Window {
         public SettingsWindow() {
@@ -8,6 +9,7 @@ namespace AutoTotal {
             foreach (string path in Properties.Settings.Default.Folders?.OfType<string>() ?? Enumerable.Empty<string>()) Folders.Items.Add(new TextBlock { Text = path });
             BlockCheckbox.IsChecked = Properties.Settings.Default.BlockFiles;
             AutoRunCheckbox.IsChecked = Autorun.Exists();
+            ExplorerItemCheckBox.IsChecked = Registry.CurrentUser.OpenSubKey(@"Software\Classes\*\shell\AutoTotal") != null;
         }
 
         private void AddFolder(object sender, RoutedEventArgs e) {
@@ -37,6 +39,36 @@ namespace AutoTotal {
                 if (!Autorun.Exists()) Autorun.Add();
             }
             else if (Autorun.Exists()) Autorun.Remove();
+            if (ExplorerItemCheckBox.IsChecked ?? false) {
+                try {
+                    string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    if (exePath.EndsWith(".dll", System.StringComparison.OrdinalIgnoreCase)) {
+                        exePath = exePath.Substring(0, exePath.Length - 4) + ".exe";
+                    }
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Classes\*\shell\AutoTotal")) {
+                        if (key != null) {
+                            key.SetValue("", AutoTotal.Properties.Resources.ScanFileOnVT);
+                            key.SetValue("Icon", exePath);
+                        }
+                    }
+                    using (RegistryKey commandKey = Registry.CurrentUser.CreateSubKey(@"Software\Classes\*\shell\AutoTotal\command")) {
+                        if (commandKey != null) {
+                            commandKey.SetValue("", $"\"{exePath}\" /scan \"%1\"");
+                        }
+                    }
+                }
+                catch (System.Exception ex) {
+                    MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else {
+                try {
+                    Registry.CurrentUser.DeleteSubKeyTree(@"Software\Classes\*\shell\AutoTotal", false);
+                }
+                catch (System.Exception ex) {
+                    MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
             Properties.Settings.Default.Save();
             Close();
         }

@@ -1,2 +1,2 @@
 @echo off
-dotnet publish -c Release --self-contained
+dotnet publish -c Release -r win-x64 --self-contained

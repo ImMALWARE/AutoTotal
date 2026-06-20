@@ -1,4 +1,4 @@
-﻿<Window x:Class="AutoTotal.SettingsWindow"
+<Window x:Class="AutoTotal.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="{x:Static res:Resources.ATSettings}"
         FontFamily="Bahnschrift"
-        Height="410"
-        Width="400"
+        Height="485"
+        Width="391"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Black" >
@@ -41,6 +41,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="120"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -83,8 +84,11 @@
             <Button Grid.Column="1" Content="{x:Static res:Resources.MinusFolder}" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="DelFolder"/>
         </Grid>
         <CheckBox Grid.Row="3" x:Name="BlockCheckbox" Content="{x:Static res:Resources.BlockFiles}" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" Foreground="White"/>
-        <CheckBox Grid.Row="4" x:Name="AutoRunCheckbox" Content="{x:Static res:Resources.Autorun}" FontSize="16" FontWeight="Bold" Margin="10,10,0,15" Foreground="White"/>
-        <Button Grid.Row="5" Content="{x:Static res:Resources.ChangeVTKey}" Width="290" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="ChangeVTKey" Margin="0,0,0,10"/>
-        <Button Grid.Row="6" Content="{x:Static res:Resources.Save}" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="Save"/>
+        <CheckBox Grid.Row="4" x:Name="AutoRunCheckbox" Content="{x:Static res:Resources.Autorun}" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" Foreground="White"/>
+        <CheckBox Grid.Row="5" x:Name="ExplorerItemCheckBox" FontSize="16" FontWeight="Bold" Margin="10,10,0,10" Foreground="White">
+            <TextBlock Text="{x:Static res:Resources.ExplorerItem}" TextWrapping="Wrap" FontSize="16"/>
+        </CheckBox>
+        <Button Grid.Row="6" Content="{x:Static res:Resources.ChangeVTKey}" Width="290" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Click="ChangeVTKey" Margin="0,5,0,10"/>
+        <Button Grid.Row="7" Content="{x:Static res:Resources.Save}" Width="120" Height="35" FontSize="20" HorizontalAlignment="Center" Background="#333333" Foreground="White" Margin="0,0,0,10" Click="Save"/>
     </Grid>
 </Window>

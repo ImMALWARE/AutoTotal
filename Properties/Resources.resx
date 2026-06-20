@@ -141,6 +141,9 @@
   <data name="BlockFiles" xml:space="preserve">
     <value>Block files until scanned</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CantTrackTelegram" xml:space="preserve">
     <value>I cannot track when the download from Telegram Desktop will finish, so you will need to confirm it manually</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="ExplorerItem" xml:space="preserve">
+    <value>Add "Scan on VT" to files' context menu</value>
+  </data>
   <data name="FileDoesntExist" xml:space="preserve">
     <value>This file doesn't exist</value>
   </data>
@@ -206,6 +212,9 @@
   </data>
   <data name="KeyChanged" xml:space="preserve">
     <value>Key has been changed!</value>
+  </data>
+  <data name="LastScanDate" xml:space="preserve">
+    <value>Last scan: </value>
   </data>
   <data name="MinusFolder" xml:space="preserve">
     <value>- folder</value>
@@ -240,8 +249,14 @@
   <data name="ScanFile" xml:space="preserve">
     <value>Scan file...</value>
   </data>
+  <data name="ScanFileOnVT" xml:space="preserve">
+    <value>Scan on VirusTotal</value>
+  </data>
   <data name="Scanning" xml:space="preserve">
     <value>Scanning </value>
+  </data>
+  <data name="SendingFile" xml:space="preserve">
+    <value>Sending file</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
