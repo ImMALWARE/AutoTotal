@@ -1,24 +1,30 @@
+<img src="https://wiki.malw.link/img/logo/autototal.png" align="right" width="100px">
+
 # AutoTotal - автоматическое сканирование файлов из Загрузок (и не только) на VirusTotal
 [README in English](https://github.com/ImMALWARE/AutoTotal/blob/master/README_EN.md)
+## Установить из winget
+```
+winget install -e --id ImMALWARE.AutoTotal
+```
 ## Добавьте все папки, куда вы скачиваете файлы
-![Добавление папок](https://i.imgur.com/9YP7ACu.png) \
+![Добавление папок](https://malw.link/img/autototal/1.png) \
 По умолчанию добавляется папка Загрузки
 
 ## Больше не нужно паранойить о том, что скачанный файл небезопасен
-![0 детектов](https://i.imgur.com/UzKeKPO.png) \
-![2 детекта](https://i.imgur.com/etlhGRl.png) \
-![Много детектов](https://i.imgur.com/6QK5Fx4.png)
+![0 детектов](https://malw.link/img/autototal/2.png) \
+![2 детекта](https://malw.link/img/autototal/3.png) \
+![Много детектов](https://malw.link/img/autototal/4.png)
 
 ## Используйте свой ключ API VirusTotal
-![Изменение API ключа](https://i.imgur.com/LUl2T5a.png)
+![Изменение API ключа](https://malw.link/img/autototal/5.png)
 
 ## Вы не сможете случайно запустить вредоносный файл до завершения сканирования
 ### Блокировка файлов на время сканирования (выключается в настройках)
-![Блокировка](https://i.imgur.com/cisYm4M.png)
+![Блокировка](https://malw.link/img/autototal/6.png)
 
 ## Удобно просканировать файлы можно вручную
-![Из трея](https://i.imgur.com/QhTVzMz.png) \
-![Из проводника](https://i.imgur.com/YcztIOh.png)
+![Из трея](https://malw.link/img/autototal/7.png) \
+![Из проводника](https://malw.link/img/autototal/8.png)
 
 ## Подтверждение при автосканировании скриптов и PDF (чтобы личные файлы случайно не отправились)
-![Демонстрация](https://i.imgur.com/sQzw2RV.png)
+![Демонстрация](https://malw.link/img/autototal/9.png)
